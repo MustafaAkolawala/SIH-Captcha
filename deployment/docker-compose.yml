@@ -1,0 +1,11 @@
+services:
+  captcha_backend:
+    build:
+      context: ../server
+      dockerfile: Dockerfile
+    image: captcha_backend:latest
+    restart: always
+    develop:
+      watch:
+        - action: rebuild
+          path: ../server
