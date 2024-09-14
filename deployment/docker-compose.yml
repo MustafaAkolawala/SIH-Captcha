@@ -3,6 +3,8 @@ services:
     build:
       context: ../server
       dockerfile: Dockerfile
+    ports:
+      - "8000:8000"  
     image: captcha_backend:latest
     restart: always
     develop:
