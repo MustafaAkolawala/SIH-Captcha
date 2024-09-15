@@ -11,3 +11,25 @@ services:
       watch:
         - action: rebuild
           path: ../server
+    networks:
+      - captcha
+
+  frontend-react:
+    build:
+      context: ../frontend
+    ports:
+      - "8081:8081"
+    volumes:
+      - ../frontend/src:/app/src
+      - ../frontend/index.html:/app/index.html
+    stdin_open: true
+    tty: true
+    restart: always
+    depends_on:
+      - captcha_backend
+    networks:
+      - captcha
+
+networks:
+  captcha:
+    driver: bridge
