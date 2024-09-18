@@ -30,6 +30,23 @@ services:
     networks:
       - captcha
 
+  mongodb:
+    image: mongo
+    container_name: 'mongodb'
+    restart: always
+    # ports:
+    #  - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: 'admin'
+      MONGO_INITDB_ROOT_PASSWORD: 'password'
+    volumes:
+      - mongodb_data:/var/lib/mongodb/data
+    networks:
+      - captcha
+
 networks:
   captcha:
     driver: bridge
+
+volumes:
+  mongodb_data:
