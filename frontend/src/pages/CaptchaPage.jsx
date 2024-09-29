@@ -87,14 +87,14 @@ export default function CaptchaPage() {
     // Simulating API call
     console.log(behavior)
     try {
-      const response = await fetch('/api/verify-captcha', {
+      const response = await fetch('http://localhost:8000/api/verify-captcha', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ aadhaarNumber, behavior }),
       })
       const data = await response.json()
       setTimeout(() => {
-        
+
       }, 20000);
       if (data.success) {
         setIsVerified(true)
